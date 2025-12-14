@@ -454,7 +454,7 @@ async function initGoogleSignIn() {
 
         // const clientId = data.clientId.trim();
         // 確実に動かすためにハードコード
-        const clientId = '224521683572-7aa3ruoltk2ps4vcc1a9i9ih9cpeegcj.apps.googleusercontent.com';
+        const clientId = '740206185258-0lg7pi8pqqu8aa66ldoaq3in0sgu5kl2.apps.googleusercontent.com';
         console.log('Google Client ID:', clientId);
 
         // Google Identity Servicesの初期化
