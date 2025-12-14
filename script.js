@@ -41,7 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const settingsBtn = document.getElementById('settings-btn');
     const closeSettingsBtn = document.getElementById('close-settings');
     const saveSettingsBtn = document.getElementById('save-settings-btn');
+
     const logoutBtn = document.getElementById('logout-btn');
+
+    const postCompleteModal = document.getElementById('post-complete-modal');
+    const postLinkBtn = document.getElementById('post-link-btn');
+    const closeCompleteModal = document.getElementById('close-complete-modal');
 
     const authForm = document.getElementById('auth-form');
     const authEmail = document.getElementById('auth-email');
@@ -240,8 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.success) {
-                alert(`投稿成功！\n記事URL: ${response.url}`);
-                window.open(response.url, '_blank');
+                // alert(`投稿成功！\n記事URL: ${response.url}`);
+                // window.open(response.url, '_blank');
+
+                // モバイル対策: 完了モーダルを表示してリンクを踏ませる
+                postLinkBtn.href = response.url;
+                postCompleteModal.classList.remove('hidden');
             } else {
                 alert('投稿失敗: ' + (response.error || response.message));
             }
@@ -287,6 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
         currentUser = null;
         localStorage.removeItem('blog_creator_user');
         location.reload();
+    });
+
+    // 投稿完了モーダルの閉じるボタン
+    closeCompleteModal.addEventListener('click', () => {
+        postCompleteModal.classList.add('hidden');
     });
 
     // 7. 記事生成
