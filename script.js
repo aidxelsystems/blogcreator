@@ -1,4 +1,4 @@
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzmub0k6crHi-1Ot2Q83UEoc6wwY94HSYycIPfvsHSnDu9UxuHUbEUciNDVRtv7LLm6Jw/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycby27akz8imOaDAbw2kH6KZ_WCZ-9ILW-i3LS3E-g-nNrmc6LZTmHLdNAumHomIZfPJk2w/exec';
 
 // 状態管理
 let currentUser = null;
@@ -132,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('theme-sheet-url').value = currentUser.settings.themeSheetUrl || '';
             document.getElementById('auto-post-time').value = currentUser.settings.autoPostTime || '';
             document.getElementById('wp-status').value = currentUser.settings.wpStatus || 'draft';
+            document.getElementById('wp-generate-thumbnail').checked = currentUser.settings.wpGenerateThumbnail === true;
         }
 
         settingsModal.classList.remove('hidden');
@@ -169,7 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
             wpPass: document.getElementById('wp-pass').value,
             themeSheetUrl: document.getElementById('theme-sheet-url').value,
             autoPostTime: document.getElementById('auto-post-time').value,
-            wpStatus: document.getElementById('wp-status').value
+            wpStatus: document.getElementById('wp-status').value,
+            wpGenerateThumbnail: document.getElementById('wp-generate-thumbnail').checked,
+            articleLength: document.getElementById('length-select').value, // 追加
+            articleTone: document.getElementById('tone-select').value      // 追加
         };
 
         try {
@@ -231,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await callGasApi({
                 action: 'postArticle',
                 wpUrl, wpUser, wpPass, wpStatus,
-                title, content
+                title, content,
+                generateThumbnail: settings.wpGenerateThumbnail === true
             });
 
             if (response.success) {
@@ -372,6 +377,18 @@ ${systemPrompt}
         if (displayEmail) displayEmail.textContent = user.email;
         if (user.systemPrompt) {
             systemPrompt = user.systemPrompt;
+        }
+
+        // 保存された設定の反映（文字数・トーン）
+        if (user.settings) {
+            if (user.settings.articleLength) {
+                const lenSelect = document.getElementById('length-select');
+                if (lenSelect) lenSelect.value = user.settings.articleLength;
+            }
+            if (user.settings.articleTone) {
+                const tSelect = document.getElementById('tone-select');
+                if (tSelect) tSelect.value = user.settings.articleTone;
+            }
         }
 
         // 画面切り替え
@@ -540,4 +557,4 @@ async function handleCredentialResponse(response) {
         console.error(e);
         alert('Googleログインエラー');
     }
-    }
+}
