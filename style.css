@@ -632,6 +632,10 @@ body {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+    .user-email {
+        display: none;
+    }
+
     .app-container {
         flex-direction: column;
         height: auto;
