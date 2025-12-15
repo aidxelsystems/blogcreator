@@ -1,5 +1,5 @@
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyMmcskm_poX6rIZ1anIKyNSLDjhC-VFE6IVH5ReTaRdBAUxIH8EmdrT0qXCm39CHhNRw/exec';
-
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbxwH0wmrNDgCFYBjrb6MsXVWkcSFm0iQBJKtUjnMgjBlBGUGTxTeRKS0lkiCrKdylZt8g/exec';
+/exe
 // 状態管理
 let currentUser = null;
 let systemPrompt = `あなたはプロのWebライターです。
