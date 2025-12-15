@@ -1,4 +1,4 @@
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyPKWgak_CQi47fWg1bBCvZ6PfnSXRRD6j1QqFm_H73IzM8J7_ri_BjuTpVUZxA4qjjOQ/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbzLBdPgA4qcGTIHX9VOXGJpvZlDfSM_hO2510zByrWmszxauschZoc8lCxCInCtfGyicw/exec';
 
 // 状態管理
 let currentUser = null;
