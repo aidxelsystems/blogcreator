@@ -1,4 +1,4 @@
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyd8VpsEmioaJnojHvn53VHS5sXQoM08VSNwZUIQb28nMNMpSDLVQcZrU9l5McIqz1MTw/exec';
+const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbyUi7JB2cdAvhcyjBM7iZTrfoDQIwzH03AYKXrqv6BmTQrh3N_RUCZIrOvP6GyUplAOpA/exec';
 
 // 状態管理
 let currentUser = null;
@@ -571,4 +571,4 @@ async function handleCredentialResponse(response) {
         console.error(e);
         alert('Googleログインエラー');
     }
-}
+        }
