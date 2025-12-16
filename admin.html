@@ -166,10 +166,8 @@
                     return JSON.parse(text);
                 } catch (e) {
                     console.error('Invalid JSON response:', text);
-                    if (text.includes('<!DOCTYPE html>')) {
-                        throw new Error('サーバーからHTMLが返されました（ログイン画面かエラー画面の可能性があります）。URLが正しいか確認してください。');
-                    }
-                    throw new Error('サーバー応答の解析に失敗しました');
+                    // エラー内容を画面に出すために詳細を含める
+                    throw new Error('サーバー応答エラー: ' + text.slice(0, 150).replace(/</g, '&lt;'));
                 }
             } catch (e) {
                 console.error('API Error:', e);
