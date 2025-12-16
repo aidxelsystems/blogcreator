@@ -113,7 +113,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mode === 'login') {
                     loginSuccess(response.user);
                 } else {
-                    alert(response.message); // 登録メール送信完了メッセージ
+                    // 新規登録
+                    if (response.user) {
+                        // ココナラユーザー等で即時完了した場合
+                        alert(response.message);
+                        loginSuccess(response.user);
+                    } else {
+                        // 通常のメール認証フロー
+                        alert(response.message);
+                    }
                 }
             } else {
                 alert(response.message || 'エラーが発生しました');
