@@ -1,7 +1,7 @@
-const GAS_API_URL = 'https://script.google.com/macros/s/AKfycbx9Mb4NJaRNxtKvY4zyA9F4t1HomHAPcsLahSp3Tb5cYIeqO37xlkX1ssNZ7rXkopbzBQ/exec';
 
 // 状態管理
 let currentUser = null;
+
 let systemPrompt = `あなたはプロのWebライターです。
 読者の興味を惹きつける、SEOに強いブログ記事を作成してください。
 構成は「導入」「見出しごとの本文」「まとめ」としてください。`;
@@ -571,4 +571,4 @@ async function handleCredentialResponse(response) {
         console.error(e);
         alert('Googleログインエラー');
     }
-        }
+}
