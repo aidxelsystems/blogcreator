@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await callGasApi({
                 action: 'postArticle',
+                email: currentUser.email,
                 wpUrl, wpUser, wpPass, wpStatus,
                 title, content,
                 generateThumbnail: settings.wpGenerateThumbnail === true
